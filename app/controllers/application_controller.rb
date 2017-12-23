@@ -12,23 +12,6 @@ class ApplicationController < Sinatra::Base
     redirect :'/signup'
   end
 
-  get '/posts' do
-    @symptoms = Symptom.all
-    if params[:type => "symptom"]
-      @type = "symptom"
-    elsif params[:type => "medication"]
-      @type = "medication"
-    end
-    erb :'posts/new'
-  end
-
-  post '/posts' do
-    @user = current_user
-    @post = Post.create(:title => params[:symptom])
-    @user.posts << @post
-    redirect "/users/#{@user.id}"
-  end
-
   helpers do
     def logged_in?
       !!session[:user_id]

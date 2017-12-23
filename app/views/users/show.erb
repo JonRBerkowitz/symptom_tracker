@@ -13,5 +13,7 @@
 <h3>Posts</h3>
 <% @user.posts.each do |post| %>
   <h5><%=post.title%></h5>
+  <p><%=post.duration%></p>
+  <p>Intensity(out of 5) <%=post.intensity%></p>
   <p><%=post.post_time%></p>
 <% end %>
