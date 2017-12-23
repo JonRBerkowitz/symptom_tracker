@@ -1,1 +1,11 @@
 <p><%= @user.username %></p>
+
+<form method="GET" action="/posts">
+  <input type="hidden" name="type" value="symptom">
+  <input type="submit" value="Symptom Post"></input>
+</form>
+
+<form method="GET" action="/posts">
+  <input type="hidden" name="type" value="medication">
+  <input type="submit" value="Take Medication"></input>
+</form>

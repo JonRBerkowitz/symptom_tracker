@@ -12,4 +12,13 @@ class ApplicationController < Sinatra::Base
     redirect :'/signup'
   end
 
+  get '/posts' do
+    if params[:type => "symptom"]
+      @type = "symptom"
+    elsif params[:type => "medication"]
+      @type = "medication"
+    end
+    erb :'posts/new'
+  end
+
 end

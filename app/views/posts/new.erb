@@ -1,0 +1,22 @@
+<h1>Create New Post</h1>
+<% if params[:type] == "symptom" %>
+<form method="POST" action="/posts">
+    <input type="text" name="symptom" placeholder="Symptom">
+    <p>Rate the intensity</p>
+    <input type="radio" name="intensity" value="1">1</input>
+    <input type="radio" name="intensity" value="2">2</input>
+    <input type="radio" name="intensity" value="3" checked>3</input>
+    <input type="radio" name="intensity" value="4">4</input>
+    <input type="radio" name="intensity" value="5">5</input>
+    <p>Duration</p>
+    <input type="text" name="duration"></input>
+    <input type="submit" value="submit">
+  </form><% elsif params[:type] == "medication" %>
+<p>Med Post</p>
+  <form method="POST" action="/posts">
+    <input type="text" name="medication" placeholder="medication">
+    <p>Dose</p>
+    <input type="text" name="dose"></input>
+    <input type="submit" value="submit">
+  </form>
+<% end %>
