@@ -1,8 +1,8 @@
 <h1>Create New Post</h1>
-<% if params[:type] == "symptom" %>
+<% if params[:kind] == "symptom" %>
 <form method="POST" action="/posts">
     <!--Creates a list of all symptoms in database/allows user to add new symptoms-->
-    <input list="symptoms" name="symptom" placeholder="Symptom">
+    <input list="symptoms" name="title" placeholder="Symptom">
     <datalist id="symptoms">
       <% @symptoms.each do |symptom| %>
       <option value="<%=symptom.name%>">
@@ -15,6 +15,7 @@
     <input type="radio" name="intensity" value="3" checked>3</input>
     <input type="radio" name="intensity" value="4">4</input>
     <input type="radio" name="intensity" value="5">5</input>
+
     <p>Duration</p>
     <input type="text" name="duration[length]"></input>
     <select name="duration[unit]">
@@ -22,16 +23,25 @@
       <option value="Hours">Hours</option>
       <option value="Days">Days</option>
     </select>
+    <input type="hidden" value="symptom" name="kind">
     <input type="submit" value="submit">
   </form>
 
-  <% elsif params[:type] == "medication" %>
-  
+  <% elsif params[:kind] == "medication" %>
+
 <p>Med Post</p>
   <form method="POST" action="/posts">
-    <input type="text" name="medication" placeholder="medication">
+    <!--Creates a list of all symptoms in database/allows user to add new symptoms-->
+    <input list="medications" name="title" placeholder="Medication">
+    <datalist id="medications">
+      <% @medications.each do |medication| %>
+      <option value="<%=medication.name%>">
+      <% end %>
+    </datalist>
+
     <p>Dose</p>
     <input type="text" name="dose"></input>
+    <input type="hidden" value="medication" name="kind">
     <input type="submit" value="submit">
   </form>
 <% end %>

@@ -1,19 +1,23 @@
 <h1><%= @user.username %></h1>
 
 <form method="GET" action="/posts">
-  <input type="hidden" name="type" value="symptom">
+  <input type="hidden" name="kind" value="symptom">
   <input type="submit" value="Symptom Post"></input>
 </form>
 
 <form method="GET" action="/posts">
-  <input type="hidden" name="type" value="medication">
+  <input type="hidden" name="kind" value="medication">
   <input type="submit" value="Take Medication"></input>
 </form>
 
 <h3>Posts</h3>
 <% @user.posts.each do |post| %>
   <h5><%=post.title%></h5>
+  <p><%=post.post_time%></p>
+  <% if post.kind == "symptom" %>
   <p><%=post.duration%></p>
   <p>Intensity(out of 5) <%=post.intensity%></p>
-  <p><%=post.post_time%></p>
+  <% elsif post.kind == "medication"%>
+  <p>Dose <%=post.dose%></p>
+  <% end %>
 <% end %>
