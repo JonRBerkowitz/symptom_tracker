@@ -23,5 +23,9 @@
   <form method="GET" action="/posts/<%=post.id%>">
     <input type="submit" value="Edit">
   </form>
+  <form method="POST" action="/posts/<%=post.id%>/delete">
+    <input type="hidden" name="_method" value="delete">
+    <input type="submit" value="Delete">
+  </form>
   <hr>
 <% end %>

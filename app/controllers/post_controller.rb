@@ -52,4 +52,12 @@ class PostController < ApplicationController
     redirect "/users/#{@user.id}"
   end
 
+  delete '/posts/:id/delete' do
+    @user = current_user
+    @post = Post.find_by_id(params[:id])
+    @post.destroy
+
+    redirect "/users/#{@user.id}"
+  end
+
 end
