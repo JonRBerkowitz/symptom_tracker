@@ -29,4 +29,27 @@ class PostController < ApplicationController
     redirect "/users/#{@user.id}"
   end
 
+  get '/posts/:id' do
+    @symptoms = Symptom.all
+    @medications = Medication.all
+    @post = Post.find_by_id(params[:id])
+    erb :'/posts/edit'
+  end
+
+  patch '/posts/:id/edit' do
+    @user = current_user
+    @post = Post.find_by_id(params[:id])
+    @post.title = params[:title]
+    if @post.kind == "symptom"
+      @post.duration = "#{params[:duration][:length]} #{params[:duration][:unit]}"
+      @post.intensity = params[:intensity]
+    elsif @post.kind == "medication"
+      @post.dose = "#{params[:dose]} mg"
+    end
+    @post.note = params[:note]
+    @post.save
+
+    redirect "/users/#{@user.id}"
+  end
+
 end

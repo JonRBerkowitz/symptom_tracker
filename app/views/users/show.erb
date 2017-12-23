@@ -20,4 +20,8 @@
   <% elsif post.kind == "medication"%>
   <p>Dose <%=post.dose%></p>
   <% end %>
+  <form method="GET" action="/posts/<%=post.id%>">
+    <input type="submit" value="Edit">
+  </form>
+  <hr>
 <% end %>
