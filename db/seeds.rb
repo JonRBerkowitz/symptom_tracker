@@ -1,0 +1,5 @@
+Symptom.create(:name => "Fever")
+Symptom.create(:name => "Headache")
+Symptom.create(:name => "Flu")
+Symptom.create(:name => "Cancer")
+Symptom.create(:name => "Tummyache")

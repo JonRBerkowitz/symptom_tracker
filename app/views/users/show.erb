@@ -9,3 +9,9 @@
   <input type="hidden" name="type" value="medication">
   <input type="submit" value="Take Medication"></input>
 </form>
+
+<h3>Posts</h3>
+<% @user.posts.each do |post| %>
+  <h5><%=post.title%></h5>
+  <p><%=post.post_time%></p>
+<% end %>

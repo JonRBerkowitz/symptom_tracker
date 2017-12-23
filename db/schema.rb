@@ -20,6 +20,8 @@ ActiveRecord::Schema.define(version: 20171223032352) do
     t.string "title"
     t.string "type"
     t.string "note"
+    t.integer "user_id"
+    t.datetime "post_time"
   end
 
   create_table "symptoms", force: :cascade do |t|
