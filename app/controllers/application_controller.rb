@@ -8,4 +8,8 @@ class ApplicationController < Sinatra::Base
     set :session_secret, "medical"
   end
 
+  get '/' do
+    redirect :'/signup'
+  end
+
 end
