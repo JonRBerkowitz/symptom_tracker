@@ -1,7 +1,23 @@
-<h1>Log In to Symptom Tracker</h1>
+<div class="container-fluid test">
+</div>
 
-<form method="POST" action="/login">
-  <input type="text" name="username" placeholder="Username" required>
-  <input type="password" name="password" placeholder="Password" required>
-  <input type="Submit" value="Log In">
-</form>
+<div class="container" id="login-page">
+    <div class="row justify-content-center">
+      <div class="col-sm-10 col-md-6 col-lg-4">
+        <h1 id="sign-in-text">Sign In</h1>
+          <div class="row" id="login-form">
+            <div class="col-12">
+              <form method="POST" action="/login">
+                <input type="text" name="username" placeholder="Username" required class="field" autofocus>
+                <br>
+                <input type="password" name="password" placeholder="Password" required class="field">
+                <br>
+                <input type="Submit" value="LOG IN" id="sign-up-button">
+              </form>
+              <p id="login-link">Don't have an account? <a href="/signup">Sign Up Here</a></p>
+            </div>
+          </div>
+      </div>
+    </div>
+</div>
+</div>

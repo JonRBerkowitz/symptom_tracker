@@ -24,12 +24,24 @@ input:focus {
   text-align: center;
   font-weight: 500;
   font-size: 1.4em;
-  padding: 6px 30px;
+  padding: 6px 40px;
   letter-spacing: .2em;
   border: none;
   display: block;
   margin: 12px auto 0 auto;
   cursor:pointer;
+}
+
+#login-link {
+  font-size: .6em;
+  text-align: center;
+  margin-top: 12px;
+  color: #BBB;
+}
+
+#login-link a {
+  text-decoration: underline;
+  color: #BBB;
 }
 
 .field {
