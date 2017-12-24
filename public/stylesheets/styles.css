@@ -74,6 +74,7 @@ input:focus {
   border-radius: 2px;
   border: 1px solid #DDD;
   background-color: white;
+  box-shadow: 2px 2px 5px #30928e;
 }
 
 .post-title{
@@ -93,8 +94,10 @@ input:focus {
 }
 
 .user-box {
-  background-color: white;
+  background-color: #24a6a1;
   border-radius: 2px;
+  box-shadow: 2px 2px 5px #30928e;
+  border: 1px solid #81e1dd;
 }
 
 .bold {
@@ -103,6 +106,10 @@ input:focus {
 
 #username {
   font-size: 22px;
+  font-weight: 700;
+  color: white;
+  text-align: center;
+  margin-top: 30px;
 }
 
 .divider {
@@ -122,12 +129,30 @@ input:focus {
   font-weight: 500;
   font-size: .8em;
   padding: 6px 20px;
-  letter-spacing: .2em;
+  letter-spacing: .1em;
   border: none;
   margin-bottom: 10px;
   cursor:pointer;
 }
 
 .sub-button:hover {
+    background-color: #078ea7;
+}
+
+.user-button {
+  background-color: #f8f8f8;
+  border-radius: 30px;
+  color: black;
+  text-align: center;
+  font-weight: 500;
+  font-size: .8em;
+  padding: 6px 20px;
+  letter-spacing: .1em;
+  border: none;
+  margin-bottom: 10px;
+  cursor:pointer;
+}
+
+.user-button:hover {
     background-color: #078ea7;
 }

@@ -9,15 +9,22 @@
       <div class="user-box">
       <h1 id="username"><%= @user.username %></h1>
       <hr>
+      <p>Known Symptoms:<p>
+      <ul>
+        <%@user.symptoms.each do |symptom|%>
+        <li><%=symptom.name%></li>
+        <%end%>
+      </ul>
+
 
       <form method="GET" action="/posts">
         <input type="hidden" name="kind" value="symptom">
-        <input type="submit" value="Symptom Post"></input>
+        <input type="submit" value="Report Symptom" class="user-button"></input>
       </form>
 
       <form method="GET" action="/posts">
         <input type="hidden" name="kind" value="medication">
-        <input type="submit" value="Take Medication"></input>
+        <input type="submit" value="Take Medication" class="user-button"></input>
       </form>
     </div>
     </div>
