@@ -1,31 +1,55 @@
-<h1><%= @user.username %></h1>
+<div class="container-fluid test">
+</div>
+<body class="main-body">
 
-<form method="GET" action="/posts">
-  <input type="hidden" name="kind" value="symptom">
-  <input type="submit" value="Symptom Post"></input>
-</form>
 
-<form method="GET" action="/posts">
-  <input type="hidden" name="kind" value="medication">
-  <input type="submit" value="Take Medication"></input>
-</form>
+<div class="container main-content">
+  <div class="row">
+    <div class="col-lg-4">
+      <div class="user-box">
+      <h1 id="username"><%= @user.username %></h1>
+      <hr>
 
-<h3>Posts</h3>
-<% @user.posts.each do |post| %>
-  <h5><%=post.title%></h5>
-  <p><%=post.post_time%></p>
-  <% if post.kind == "symptom" %>
-  <p><%=post.duration%></p>
-  <p>Intensity(out of 5) <%=post.intensity%></p>
-  <% elsif post.kind == "medication"%>
-  <p>Dose <%=post.dose%></p>
-  <% end %>
-  <form method="GET" action="/posts/<%=post.id%>">
-    <input type="submit" value="Edit">
-  </form>
-  <form method="POST" action="/posts/<%=post.id%>/delete">
-    <input type="hidden" name="_method" value="delete">
-    <input type="submit" value="Delete">
-  </form>
-  <hr>
-<% end %>
+      <form method="GET" action="/posts">
+        <input type="hidden" name="kind" value="symptom">
+        <input type="submit" value="Symptom Post"></input>
+      </form>
+
+      <form method="GET" action="/posts">
+        <input type="hidden" name="kind" value="medication">
+        <input type="submit" value="Take Medication"></input>
+      </form>
+    </div>
+    </div>
+
+    <div class="col-lg-8">
+
+    <% @user.posts.each do |post| %>
+      <div row>
+        <div class="col-sm-12 post">
+            <p class="post-title"><%=post.title%></p>
+
+            <hr>
+            <% if post.kind == "symptom" %>
+            <p><span class="bold">Duration:</span> <%=post.duration%> <span class="divider">|</span><span class="bold">Intensity:</span> <%=post.intensity%>/5</p>
+            <% elsif post.kind == "medication"%>
+            <p><span class="bold">Dose:</span><%=post.dose%></p>
+            <% end %>
+            <p class="date"><%=post.post_time%></p>
+
+            <form method="GET" action="/posts/<%=post.id%>">
+              <input type="submit" value="Edit" class="sub-button">
+            </form>
+            <form method="POST" action="/posts/<%=post.id%>/delete">
+              <input type="hidden" name="_method" value="delete">
+              <input type="submit" value="Delete" class="sub-button">
+            </form>
+      </div>
+      <% end %>
+
+    </div>
+
+  </div>
+</div>
+</div>
+</body>

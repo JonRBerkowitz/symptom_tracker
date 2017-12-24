@@ -1,4 +1,11 @@
-input:valid {
+
+
+
+body {
+  font-family: 'Lato', sans-serif;
+}
+
+input:valid .field{
   border: 2px solid #1edd86;
 }
 
@@ -60,4 +67,67 @@ input:focus {
   background-color: #EEE;
   border: none;
   border-radius: 3px;
+}
+
+.post {
+  margin-bottom: 18px;
+  border-radius: 2px;
+  border: 1px solid #DDD;
+  background-color: white;
+}
+
+.post-title{
+  font-size: 1.8em;
+  font-weight: 900;
+  margin-top: 10px;
+  margin-bottom: -10px;
+
+}
+
+.main-body {
+  background-color: #2bb1ac;
+}
+
+.main-content {
+  margin-top: 5em;
+}
+
+.user-box {
+  background-color: white;
+  border-radius: 2px;
+}
+
+.bold {
+  font-weight: 600;
+}
+
+#username {
+  font-size: 22px;
+}
+
+.divider {
+  margin-left: 5px;
+  margin-right: 8px;
+}
+
+.date {
+  font-size: .8em;
+}
+
+.sub-button {
+  background-color: #636666;
+  border-radius: 30px;
+  color: white;
+  text-align: center;
+  font-weight: 500;
+  font-size: .8em;
+  padding: 6px 20px;
+  letter-spacing: .2em;
+  border: none;
+  margin-bottom: 10px;
+  cursor:pointer;
+}
+
+.sub-button:hover {
+    background-color: #078ea7;
 }
