@@ -14,12 +14,37 @@ class PostController < ApplicationController
   post '/posts' do
     @user = current_user
     @post = Post.create(:title => params[:title])
+
     @post.kind = params[:kind]
 
     if @post.kind == "symptom"
+
+
+      if Symptom.find_by(:name => params[:title])
+        @symptom = Symptom.find_by(:name => params[:title])
+      else
+        @symptom = Symptom.create(:name => params[:title])
+      end
+
       @post.duration = "#{params[:duration][:length]} #{params[:duration][:unit]}"
       @post.intensity = params[:intensity]
+
+      if !@user.symptoms.include?(@symptom)
+        @user.symptoms << @symptom
+      end
+
     elsif @post.kind == "medication"
+
+      if Medication.find_by(:name => params[:title])
+        @medications = Medication.find_by(:name => params[:title])
+      else
+        @medications = Medication.create(:name => params[:title])
+      end
+
+      if !@user.medications.include?(@medications)
+        @user.medications << @medications
+      end
+      
       @post.dose = "#{params[:dose]} mg"
     end
     @post.note = params[:note]

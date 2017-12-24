@@ -16,6 +16,12 @@
         <%end%>
       </ul>
 
+      <p>Current Medications:<p>
+      <ul>
+        <%@user.medications.each do |medication|%>
+        <li><%=medication.name%></li>
+        <%end%>
+      </ul>
 
       <form method="GET" action="/posts">
         <input type="hidden" name="kind" value="symptom">
