@@ -1,0 +1,46 @@
+input:focus {
+  outline: none;
+    border: 1px solid #CCC;
+}
+
+#login-page {
+  padding-top: 8%;
+}
+
+#login-form {
+  margin-top: 20px;
+}
+
+#sign-in-text {
+  font-size: 2.5em;
+  font-weight: bold;
+  text-align: center;
+}
+
+#sign-up-button {
+  background-color: #2bb1ac;
+  border-radius: 30px;
+  color: white;
+  text-align: center;
+  font-weight: 500;
+  font-size: 1.4em;
+  padding: 6px 30px;
+  letter-spacing: .2em;
+  border: none;
+  display: block;
+  margin: 12px auto 0 auto;
+  cursor:pointer;
+}
+
+.field {
+  width: 100%;
+  padding: 10px 20px;
+  margin-bottom: 14px;
+  background-color: #EEE;
+  border: none;
+}
+
+.test {
+  background-color: grey;
+  height: 50px;
+}
