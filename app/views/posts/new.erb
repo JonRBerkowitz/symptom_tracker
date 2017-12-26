@@ -4,7 +4,11 @@
 <div class="container" id="login-page">
     <div class="row justify-content-center">
       <div class="col-sm-10 col-md-6 col-lg-4">
+        <% if params[:kind] == "symptom" %>
         <h1 id="title-text">Report Symptom</h1>
+        <% elsif params[:kind] == "medication" %>
+        <h1 id="title-text">Take Medication</h1>
+        <%end%>
           <div class="row" id="login-form">
             <div class="col-12">
               <% if params[:kind] == "symptom" %>
@@ -22,7 +26,7 @@
                 <option value="Hours">Hours</option>
                 <option value="Days">Days</option>
               </select>
-              <textarea rows="4" class="field" name="note"></textarea>
+              <textarea rows="4" class="field" name="note" placeholder="Add a note..."></textarea>
               <span class="int">Intensity</span>
               <input type="radio" name="intensity" value="1"><span class="int-num">1</span></input>
               <input type="radio" name="intensity" value="2"><span class="int-num">2</span></input>
@@ -35,6 +39,21 @@
               </form>
               <%end%>
 
+              <% if params[:kind] == "medication" %>
+              <form method="POST" action="/posts">
+                <input type="hidden" name="kind" value="medication">
+              <input list="medications" name="title" placeholder="Medication" class="field" autofocus></input>
+              <datalist id="medications">
+                <% @medications.each do |medication| %>
+                <option value="<%=medication.name%>">
+                <% end %>
+              </datalist>
+              <input name="dose" placeholder="Dose (In Milligrams)" class="field"></input>
+              <textarea rows="4" class="field" name="note" placeholder="Add a note..."></textarea>
+              <br>
+              <input type="Submit" value="SUBMIT" id="submit-button">
+              </form>
+              <%end%>
             </div>
           </div>
       </div>
