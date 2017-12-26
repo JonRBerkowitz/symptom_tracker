@@ -1,35 +1,128 @@
 <div class="container-fluid test">
 </div>
 <body class="main-body">
+  <div class="container main-content">
+    <div class="row">
+      <div class="col-lg-4">
+        <div class="container fix-box">
+          <div class="row">
+            <div class="col-sm-12 profile-box">
+              <h1 id="username">Welcome,<br><%= @user.username %>.</h1>
+              <p class="sub-title">Known Symptoms:<p>
+              <p class="user-symptoms">
+                <%@user.symptoms.each do |symptom|%>
+                <ul>
+                <li>- <%=symptom.name%></li>
+                <ul>
+                <%end%>
+              </p>
 
+              <p class="sub-title">Current Medications:<p>
+                <p class="user-symptoms">
+                <ul>
+                <%@user.medications.each do |medication|%>
+                <li>- <%=medication.name%></li>
+                </ul>
+                <%end%>
+              </p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-12">
+              <form method="GET" action="/posts">
+                <input type="hidden" name="kind" value="symptom"></input>
+                <input type="submit" value="Report Symptom" class="user-button"></input>
+              </form>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-12">
+            <form method="GET" action="/posts">
+              <input type="hidden" name="kind" value="medication"></input>
+              <input type="submit" value="Take Medication" class="user-button"></input>
+            </form>
+          </div>
+        </div>
+      </div>
+      </div>
 
+      <div class="col-lg-8">
+        <% @user.posts.each do |post| %>
+          <div class="container post-box">
+            <div class="row post-title-box">
+              <div class="col-sm-12">
+                <p class="post-title"><%=post.title%></p>
+              </div>
+            </div>
+            <% if post.note %>
+            <div class="row post-note-box">
+              <div class="col-sm-12">
+                <p class="post-note"><%=post.note%></p>
+              </div>
+            </div>
+            <% end %>
+            <div class="row post-info-box">
+              <div class="col-sm-12">
+                <p><%=post.duration%>&nbsp;&nbsp; <span class="bullet">&bull;</span> &nbsp;&nbsp;<%=post.intensity%>/5 Intensity&nbsp;&nbsp; <span class="bullet">&bull;</span> &nbsp;&nbsp;<%=post.post_time%></p>
+              </div>
+            </div>
+            <hr>
+
+            <div class="row">
+              <div class="col-sm-8">
+                
+              </div>
+              <div class="col-sm-2 button-box">
+                <form method="GET" action="/posts/<%=post.id%>">
+                  <input type="submit" value="Edit" class="sub-button">
+                </form>
+              </div>
+              <div class="col-sm-2 button-box">
+                <form method="POST" action="/posts/<%=post.id%>/delete">
+                  <input type="hidden" name="_method" value="delete">
+                  <input type="submit" value="Delete" class="sub-button">
+                </form>
+              </div>
+
+            </div>
+        </div>
+        <% end %>
+
+      </div>
+    </div>
+  </div>
+
+<!--
 <div class="container main-content">
   <div class="row">
     <div class="col-lg-4">
       <div class="user-box">
-      <h1 id="username"><%= @user.username %></h1>
-      <hr>
-      <p>Known Symptoms:<p>
-      <ul>
+      <h1 id="username">Welcome, <%= @user.username %>.</h1>
+      <p class="sub-title">Known Symptoms:<p>
+      <p class="user-symptoms">
         <%@user.symptoms.each do |symptom|%>
-        <li><%=symptom.name%></li>
+        <ul>
+        <li>- <%=symptom.name%></li>
+        <ul>
         <%end%>
-      </ul>
+      </p>
 
-      <p>Current Medications:<p>
-      <ul>
+      <p class="sub-title">Current Medications:<p>
+        <p class="user-symptoms">
+        <ul>
         <%@user.medications.each do |medication|%>
-        <li><%=medication.name%></li>
+        <li>- <%=medication.name%></li>
+        </ul>
         <%end%>
-      </ul>
+      </p>
 
       <form method="GET" action="/posts">
-        <input type="hidden" name="kind" value="symptom">
+        <input type="hidden" name="kind" value="symptom"></input>
         <input type="submit" value="Report Symptom" class="user-button"></input>
       </form>
 
       <form method="GET" action="/posts">
-        <input type="hidden" name="kind" value="medication">
+        <input type="hidden" name="kind" value="medication"></input>
         <input type="submit" value="Take Medication" class="user-button"></input>
       </form>
     </div>
@@ -41,8 +134,6 @@
       <div row>
         <div class="col-sm-12 post">
             <p class="post-title"><%=post.title%></p>
-
-            <hr>
             <% if post.kind == "symptom" %>
             <p><span class="bold">Duration:</span> <%=post.duration%> <span class="divider">|</span><span class="bold">Intensity:</span> <%=post.intensity%>/5</p>
             <% elsif post.kind == "medication"%>
@@ -65,4 +156,5 @@
   </div>
 </div>
 </div>
+-->
 </body>

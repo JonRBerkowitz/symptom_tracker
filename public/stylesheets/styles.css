@@ -74,19 +74,34 @@ input:focus {
   border-radius: 2px;
   border: 1px solid #DDD;
   background-color: white;
-  box-shadow: 2px 2px 5px #30928e;
+  box-shadow: 2px 2px 5px #191d2e;
 }
 
-.post-title{
+.post-title-box{
+  background-color: #42c0bb;
+  margin-bottom: 15px;
+
+}
+
+.post-title {
   font-size: 1.8em;
   font-weight: 900;
-  margin-top: 10px;
-  margin-bottom: -10px;
-
+  color: white;
+  margin-top: 7px;
+  margin-bottom: 5px;
 }
 
+.post-time {
+  font-size: .8em;
+  font-weight: 400;
+  font-style: italic;
+  text-align: left;
+  padding-bottom: -19px;
+}
+
+
 .main-body {
-  background-color: #2bb1ac;
+  background-color: #30364b;
 }
 
 .main-content {
@@ -94,10 +109,10 @@ input:focus {
 }
 
 .user-box {
-  background-color: #24a6a1;
-  border-radius: 2px;
-  box-shadow: 2px 2px 5px #30928e;
-  border: 1px solid #81e1dd;
+  background-color: #eafcfb;
+  border-radius: 5px;
+  box-shadow: 2px 2px 5px #191d2e;
+  border: 1px solid #6990ab;
 }
 
 .bold {
@@ -105,11 +120,13 @@ input:focus {
 }
 
 #username {
-  font-size: 22px;
-  font-weight: 700;
-  color: white;
+  font-size: 1.6em;
+  font-weight: 900;
+  color: #173736;
   text-align: center;
   margin-top: 30px;
+  margin-bottom: 20px;
+
 }
 
 .divider {
@@ -131,8 +148,12 @@ input:focus {
   padding: 6px 20px;
   letter-spacing: .1em;
   border: none;
-  margin-bottom: 10px;
+  margin-bottom: 12px;
   cursor:pointer;
+}
+
+.button-box {
+  margin-right: -20px;
 }
 
 .sub-button:hover {
@@ -140,7 +161,7 @@ input:focus {
 }
 
 .user-button {
-  background-color: #f8f8f8;
+  background-color: #fdffff;
   border-radius: 30px;
   color: black;
   text-align: center;
@@ -149,10 +170,66 @@ input:focus {
   padding: 6px 20px;
   letter-spacing: .1em;
   border: none;
-  margin-bottom: 10px;
   cursor:pointer;
+  float: left;
+  display: inline;
+  margin-top: 16px;
+  width: 100%;
 }
 
 .user-button:hover {
     background-color: #078ea7;
+    color: white;
+}
+
+.sub-title {
+  font-size: .9em;
+  font-weight: 400;
+  background-color: #095b94;
+  padding: 9px 0;
+  color: white;
+  padding-left: 20px;
+  margin-left: -15px;
+  margin-right: -15px;
+}
+
+.user-symptoms {
+  text-align: center;
+}
+
+li {
+  font-size: .8em;
+  font-weight: 400;
+}
+
+.profile-box {
+  background-color: white;
+  border-radius: 3px;
+  margin-bottom: 10px;
+}
+
+.post-box {
+  background-color: white;
+  margin-bottom: 20px;
+}
+
+.post-note {
+  font-size: .9em;
+}
+
+.fix-box {
+  position: fixed;
+  max-width: 300px;
+}
+
+hr {
+  margin-top: 0;
+}
+
+.post-info {
+  font-weight: 700;
+}
+
+.bullet {
+  color: #CCC;
 }
