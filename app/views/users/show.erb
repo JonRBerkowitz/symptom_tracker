@@ -8,7 +8,7 @@
           <div class="row">
             <div class="col-sm-12 profile-box">
               <h1 id="username">Welcome,<br><%= @user.username %>.</h1>
-              <p class="sub-title">Known Symptoms:<p>
+              <p class="sub-title symptom">Known Symptoms:<p>
               <p class="user-symptoms">
                 <%@user.symptoms.each do |symptom|%>
                 <ul>
@@ -17,7 +17,7 @@
                 <%end%>
               </p>
 
-              <p class="sub-title">Current Medications:<p>
+              <p class="sub-title medication">Current Medications:<p>
                 <p class="user-symptoms">
                 <ul>
                 <%@user.medications.each do |medication|%>
@@ -31,7 +31,7 @@
             <div class="col-sm-12">
               <form method="GET" action="/posts">
                 <input type="hidden" name="kind" value="symptom"></input>
-                <input type="submit" value="Report Symptom" class="user-button"></input>
+                <input type="submit" value="Report Symptom" class="user-button button-s"></input>
               </form>
             </div>
           </div>
@@ -39,7 +39,7 @@
             <div class="col-sm-12">
             <form method="GET" action="/posts">
               <input type="hidden" name="kind" value="medication"></input>
-              <input type="submit" value="Take Medication" class="user-button"></input>
+              <input type="submit" value="Take Medication" class="user-button button-m"></input>
             </form>
           </div>
         </div>
@@ -47,9 +47,9 @@
       </div>
 
       <div class="col-lg-8">
-        <% @user.posts.each do |post| %>
+        <% @user.posts.reverse_each do |post| %>
           <div class="container post-box">
-            <div class="row post-title-box">
+            <div class="row post-title-box <%if post.kind == "medication"%>medbox<%end%>">
               <div class="col-sm-12">
                 <p class="post-title"><%=post.title%></p>
               </div>
@@ -62,15 +62,21 @@
             </div>
             <% end %>
             <div class="row post-info-box">
+              <%if post.kind == "symptom" %>
               <div class="col-sm-12">
                 <p><%=post.duration%>&nbsp;&nbsp; <span class="bullet">&bull;</span> &nbsp;&nbsp;<%=post.intensity%>/5 Intensity&nbsp;&nbsp; <span class="bullet">&bull;</span> &nbsp;&nbsp;<%=post.post_time%></p>
               </div>
+              <%elsif post.kind == "medication"%>
+              <div class="col-sm-12">
+                <p>Took <%=post.dose%>&nbsp;&nbsp; <span class="bullet">&bull;</span> &nbsp;&nbsp;<%=post.post_time%></p>
+              </div>
+              <% end %>
             </div>
             <hr>
 
             <div class="row">
               <div class="col-sm-8">
-                
+
               </div>
               <div class="col-sm-2 button-box">
                 <form method="GET" action="/posts/<%=post.id%>">

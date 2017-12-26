@@ -69,17 +69,11 @@ input:focus {
   border-radius: 3px;
 }
 
-.post {
-  margin-bottom: 18px;
-  border-radius: 2px;
-  border: 1px solid #DDD;
-  background-color: white;
-  box-shadow: 2px 2px 5px #191d2e;
-}
 
 .post-title-box{
-  background-color: #42c0bb;
+  background-color: #05A8AA;
   margin-bottom: 15px;
+  border-radius: 3px 3px 0 0;
 
 }
 
@@ -101,7 +95,7 @@ input:focus {
 
 
 .main-body {
-  background-color: #30364b;
+  background-color: #282831;
 }
 
 .main-content {
@@ -177,8 +171,13 @@ input:focus {
   width: 100%;
 }
 
-.user-button:hover {
-    background-color: #078ea7;
+.button-s:hover {
+    background-color: #05A8AA;
+    color: white;
+}
+
+.button-m:hover {
+    background-color: #345995;
     color: white;
 }
 
@@ -211,6 +210,7 @@ li {
 .post-box {
   background-color: white;
   margin-bottom: 20px;
+  border-radius: 3px;
 }
 
 .post-note {
@@ -232,4 +232,16 @@ hr {
 
 .bullet {
   color: #CCC;
+}
+
+.medbox {
+  background-color: #345995;
+}
+
+.symptom {
+  background-color: #05A8AA;
+}
+
+.medication {
+  background-color: #345995;
 }
