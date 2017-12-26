@@ -1,48 +1,44 @@
-<h1>Create New Post</h1>
-<% if params[:kind] == "symptom" %>
-<form method="POST" action="/posts">
-    <!--Creates a list of all symptoms in database/allows user to add new symptoms-->
-    <input list="symptoms" name="title" placeholder="Symptom">
-    <datalist id="symptoms">
-      <% @symptoms.each do |symptom| %>
-      <option value="<%=symptom.name%>">
-      <% end %>
-    </datalist>
+<div class="container-fluid test">
+</div>
+<body class="main-body">
+<div class="container" id="login-page">
+    <div class="row justify-content-center">
+      <div class="col-sm-10 col-md-6 col-lg-4">
+        <h1 id="title-text">Report Symptom</h1>
+          <div class="row" id="login-form">
+            <div class="col-12">
+              <% if params[:kind] == "symptom" %>
+              <form method="POST" action="/posts">
+                <input type="hidden" name="kind" value="symptom">
+              <input list="symptoms" name="title" placeholder="Symptom" class="field" autofocus>
+              <datalist id="symptoms">
+                <% @symptoms.each do |symptom| %>
+                <option value="<%=symptom.name%>">
+                <% end %>
+              </datalist>
+              <input type="text" name="duration[length]" class="field field-alt" placeholder="Duration"></input>
+              <select name="duration[unit]" class="time-box">
+                <option value="Minutes">Minutes</option>
+                <option value="Hours">Hours</option>
+                <option value="Days">Days</option>
+              </select>
+              <textarea rows="4" class="field" name="note"></textarea>
+              <span class="int">Intensity</span>
+              <input type="radio" name="intensity" value="1"><span class="int-num">1</span></input>
+              <input type="radio" name="intensity" value="2"><span class="int-num">2</span></input>
+              <input type="radio" name="intensity" value="3" checked><span class="int-num">3</span></input>
+              <input type="radio" name="intensity" value="4"><span class="int-num">4</span></input>
+              <input type="radio" name="intensity" value="5"><span class="int-num">5</span></input>
 
-    <p>Rate the intensity</p>
-    <input type="radio" name="intensity" value="1">1</input>
-    <input type="radio" name="intensity" value="2">2</input>
-    <input type="radio" name="intensity" value="3" checked>3</input>
-    <input type="radio" name="intensity" value="4">4</input>
-    <input type="radio" name="intensity" value="5">5</input>
+                <br>
+                <input type="Submit" value="SUBMIT" id="submit-button">
+              </form>
+              <%end%>
 
-    <p>Duration</p>
-    <input type="text" name="duration[length]"></input>
-    <select name="duration[unit]">
-      <option value="Minutes">Minutes</option>
-      <option value="Hours">Hours</option>
-      <option value="Days">Days</option>
-    </select>
-    <input type="text" name="note"></input>
-    <input type="hidden" value="symptom" name="kind">
-    <input type="submit" value="submit">
-  </form>
-
-  <% elsif params[:kind] == "medication" %>
-
-<p>Med Post</p>
-  <form method="POST" action="/posts">
-    <!--Creates a list of all symptoms in database/allows user to add new symptoms-->
-    <input list="medications" name="title" placeholder="Medication">
-    <datalist id="medications">
-      <% @medications.each do |medication| %>
-      <option value="<%=medication.name%>">
-      <% end %>
-    </datalist>
-
-    <p>Dose</p>
-    <input type="text" name="dose"></input>
-    <input type="hidden" value="medication" name="kind">
-    <input type="submit" value="submit">
-  </form>
-<% end %>
+            </div>
+          </div>
+      </div>
+    </div>
+</div>
+</div>
+</body>

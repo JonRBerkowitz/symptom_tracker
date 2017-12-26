@@ -54,13 +54,7 @@
                 <p class="post-title"><%=post.title%></p>
               </div>
             </div>
-            <% if post.note %>
-            <div class="row post-note-box">
-              <div class="col-sm-12">
-                <p class="post-note"><%=post.note%></p>
-              </div>
-            </div>
-            <% end %>
+
             <div class="row post-info-box">
               <%if post.kind == "symptom" %>
               <div class="col-sm-12">
@@ -72,6 +66,13 @@
               </div>
               <% end %>
             </div>
+            <% if post.note %>
+            <div class="row post-note-box">
+              <div class="col-sm-12">
+                <p class="post-note"><%=post.note%></p>
+              </div>
+            </div>
+            <% end %>
             <hr>
 
             <div class="row">

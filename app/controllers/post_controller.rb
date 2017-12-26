@@ -44,7 +44,7 @@ class PostController < ApplicationController
       if !@user.medications.include?(@medications)
         @user.medications << @medications
       end
-      
+
       @post.dose = "#{params[:dose]} mg"
     end
     @post.note = params[:note]

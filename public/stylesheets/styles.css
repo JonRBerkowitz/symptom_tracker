@@ -48,6 +48,22 @@ input:focus {
   cursor:pointer;
 }
 
+#submit-button {
+  background-color: #05A8AA;
+  border-radius: 30px;
+  color: white;
+  text-align: center;
+  font-weight: 500;
+  font-size: 1.4em;
+  padding: 6px 40px;
+  letter-spacing: .2em;
+  border: none;
+  display: block;
+  margin: 22px auto 0 auto;
+  cursor:pointer;
+}
+
+
 #login-link {
   font-size: .6em;
   text-align: center;
@@ -69,6 +85,19 @@ input:focus {
   border-radius: 3px;
 }
 
+.field-alt {
+  width: 60%;
+}
+
+.time-box {
+  width: 38%;
+  height: 44px;
+  padding: 10px 20px;
+  margin-bottom: 14px;
+  background-color: #EEE;
+  border: none;
+  border-radius: 0;
+}
 
 .post-title-box{
   background-color: #05A8AA;
@@ -244,4 +273,28 @@ hr {
 
 .medication {
   background-color: #345995;
+}
+
+ #title-text {
+   font-size: 2.5em;
+   font-weight: bold;
+   text-align: center;
+   color: white;
+ }
+
+.int {
+  color: white;
+  padding-left: 0;
+  padding-right: 18px;
+}
+
+.int-num {
+  color: white;
+  padding-left: 6px;
+  padding-right: 9px;
+}
+
+.submit {
+  padding-top: 33px;
+  background-color: red;
 }
