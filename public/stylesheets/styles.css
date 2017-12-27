@@ -322,3 +322,9 @@ hr {
   color: #c0c0c0;
   font-weight: 400;
 }
+
+.navbar {
+  background-color: white;
+  border-bottom: 1px solid #DDD;
+  font-weight: 900;
+}
