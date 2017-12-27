@@ -12,4 +12,13 @@ ALPHA = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "
    end
  end
 
+ def make_medications
+   ALPHA.each do |letter|
+     Nokogiri::HTML(open("https://www.medicinenet.com/medications/alpha_#{letter}.htm")).css(".AZ_results ul li").each do |i|
+       Medication.create(:name => i.css("a").text)
+     end
+   end
+ end
+
 make_symptoms
+make_medications
