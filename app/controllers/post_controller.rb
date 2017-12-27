@@ -1,6 +1,8 @@
 class PostController < ApplicationController
 
   get '/posts' do
+    if logged_in?
+
     @symptoms = Symptom.all
     @medications = Medication.all
     if params[:type => "symptom"]
@@ -9,6 +11,9 @@ class PostController < ApplicationController
       @type = "medication"
     end
     erb :'/posts/new'
+  else
+    redirect '/login'
+  end
   end
 
   post '/posts' do
@@ -58,7 +63,11 @@ class PostController < ApplicationController
     @symptoms = Symptom.all
     @medications = Medication.all
     @post = Post.find_by_id(params[:id])
-    erb :'/posts/edit'
+    if current_user.posts.include?(@post)
+      erb :'/posts/edit'
+    else
+      redirect '/'
+    end
   end
 
   patch '/posts/:id/edit' do
@@ -80,9 +89,12 @@ class PostController < ApplicationController
   delete '/posts/:id/delete' do
     @user = current_user
     @post = Post.find_by_id(params[:id])
-    @post.destroy
-
-    redirect "/users/#{@user.id}"
+    if current_user.posts.include?(@post)
+      @post.destroy
+      redirect "/users/#{@user.id}"
+    else
+      redirect '/login'
+    end
   end
 
 end
