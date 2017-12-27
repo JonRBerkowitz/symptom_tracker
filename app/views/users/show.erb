@@ -52,6 +52,9 @@
       </div>
 
       <div class="col-lg-8">
+        <%if !@user.posts%>
+        <h2 class="starter-text">Add a symptom or medication to get started.</h2>
+        <% end %>
         <% @user.posts.reverse_each do |post| %>
           <div class="container post-box">
             <div class="row post-title-box <%if post.kind == "medication"%>medbox<%end%>">

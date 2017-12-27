@@ -305,3 +305,8 @@ hr {
   border-top: 1px solid #7f7f7f;
   margin-top: 15px;
 }
+
+.starter-text {
+  color: #c0c0c0;
+  font-weight: 400;
+}
