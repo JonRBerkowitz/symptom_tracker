@@ -1,8 +1,8 @@
+<!--
 <h1>Edit Post</h1>
 <% if @post.kind == "symptom" %>
 <form method="POST" action="/posts/<%=@post.id%>/edit">
   <input type="hidden" name="_method" value="patch">
-    <!--Creates a list of all symptoms in database/allows user to add new symptoms-->
     <input list="symptoms" name="title" placeholder="<%=@post.title%>">
     <datalist id="symptoms">
       <% @symptoms.each do |symptom| %>
@@ -34,7 +34,6 @@
   <form method="POST" action="/posts/<%=@post.id%>/edit">
     <input type="hidden" name="_method" value="patch">
 
-    <!--Creates a list of all symptoms in database/allows user to add new symptoms-->
     <input list="medications" name="title" placeholder="<%=@post.title%>">
     <datalist id="medications">
       <% @medications.each do |medication| %>
@@ -48,3 +47,70 @@
     <input type="submit" value="submit">
   </form>
 <% end %>
+-->
+
+<div class="container-fluid test">
+</div>
+<body class="main-body">
+<div class="container" id="login-page">
+    <div class="row justify-content-center">
+      <div class="col-sm-10 col-md-6 col-lg-4">
+        <% if @post.kind == "symptom" %>
+        <h1 id="title-text">Edit Symptom</h1>
+        <% elsif @post.kind == "medication" %>
+        <h1 id="title-text">Edit Medication</h1>
+        <%end%>
+          <div class="row" id="login-form">
+            <div class="col-12">
+              <% if @post.kind == "symptom" %>
+              <form method="POST" action="/posts/<%=@post.id%>/edit">
+                <input type="hidden" name="_method" value="patch">
+              <input list="symptoms" name="title" placeholder="Symptom" class="field" value="<%=@post.title%>" autofocus>
+              <datalist id="symptoms">
+                <% @symptoms.each do |symptom| %>
+                <option value="<%=symptom.name%>">
+                <% end %>
+              </datalist>
+              <input type="text" name="duration[length]" class="field field-alt" placeholder="Duration" value="<%=@post.duration.split(" ").first%>"></input>
+              <%time = @post.duration.split(" ").last %>
+              <select name="duration[unit]" class="time-box">
+                <option value="Minutes" <%if time == "Minutes"%>selected<%end%>>Minutes</option>
+                <option value="Hours" <%if time == "Hours"%>selected<%end%>>Hours</option>
+                <option value="Days" <%if time == "Days"%>selected<%end%>>Days</option>
+              </select>
+              <textarea rows="4" class="field" name="note" placeholder="Add a note..."><%=@post.note%></textarea>
+              <span class="int">Intensity</span>
+
+              <input type="radio" name="intensity" value="1"<%if @post.intensity == "1"%>checked<%end%>><span class="int-num">1</span></input>
+              <input type="radio" name="intensity" value="2"<%if @post.intensity == "2"%>checked<%end%>><span class="int-num">2</span></input>
+              <input type="radio" name="intensity" value="3"<%if @post.intensity == "3"%>checked<%end%>><span class="int-num">3</span></input>
+              <input type="radio" name="intensity" value="4"<%if @post.intensity == "4"%>checked<%end%>><span class="int-num">4</span></input>
+              <input type="radio" name="intensity" value="5"<%if @post.intensity == "5"%>checked<%end%>><span class="int-num">5</span></input>
+
+                <br>
+                <input type="Submit" value="SUBMIT" id="submit-button">
+              </form>
+              <%end%>
+
+              <% if @post.kind == "medication" %>
+              <form method="POST" action="/posts/<%=@post.id%>/edit">
+                <input type="hidden" name="_method" value="patch">
+              <input list="medications" name="title" placeholder="Medication" class="field" value="<%=@post.title%>"autofocus></input>
+              <datalist id="medications">
+                <% @medications.each do |medication| %>
+                <option value="<%=medication.name%>">
+                <% end %>
+              </datalist>
+              <input name="dose" placeholder="Dose (In Milligrams)" value="<%=@post.dose%>" class="field"></input>
+              <textarea rows="4" class="field" name="note" placeholder="Add a note..."><%=@post.note%></textarea>
+              <br>
+              <input type="Submit" value="SUBMIT" id="submit-button">
+              </form>
+              <%end%>
+            </div>
+          </div>
+      </div>
+    </div>
+</div>
+</div>
+</body>
