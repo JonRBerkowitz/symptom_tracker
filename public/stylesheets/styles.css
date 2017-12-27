@@ -252,14 +252,20 @@ li {
   font-size: .9em;
 }
 
-@media screen and (max-width: 995px) {
+@media screen and (min-width: 1200px) {
+  .fix-box {
+    min-width: 350px;
+  }
+}
+
+@media screen and (min-width: 1001px) {
   .fix-box {
     position: fixed;
     max-width: 300px;
   }
 }
 
-@media screen and (max-width: 994px) {
+@media screen and (max-width: 1000px) {
   .fix-box {
     position: relative;
   }
