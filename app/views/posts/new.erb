@@ -13,13 +13,13 @@
               <% if params[:kind] == "symptom" %>
               <form method="POST" action="/posts">
                 <input type="hidden" name="kind" value="symptom">
-              <input list="symptoms" name="title" placeholder="Symptom" class="field" autofocus>
+              <input list="symptoms" name="title" placeholder="Symptom" class="field" autofocus required>
               <datalist id="symptoms">
                 <% @symptoms.each do |symptom| %>
                 <option value="<%=symptom.name%>">
                 <% end %>
               </datalist>
-              <input type="text" name="duration[length]" class="field field-alt" placeholder="Duration"></input>
+              <input type="text" name="duration[length]" class="field field-alt" placeholder="Duration" required onkeypress='return event.charCode >= 48 && event.charCode <= 57'></input>
               <select name="duration[unit]" class="time-box">
                 <option value="Minutes">Minutes</option>
                 <option value="Hours">Hours</option>
@@ -41,13 +41,13 @@
               <% if params[:kind] == "medication" %>
               <form method="POST" action="/posts">
                 <input type="hidden" name="kind" value="medication">
-              <input list="medications" name="title" placeholder="Medication" class="field" autofocus></input>
+              <input list="medications" name="title" placeholder="Medication" class="field" autofocus required></input>
               <datalist id="medications">
                 <% @medications.each do |medication| %>
                 <option value="<%=medication.name%>">
                 <% end %>
               </datalist>
-              <input name="dose" placeholder="Dose (In Milligrams)" class="field"></input>
+              <input name="dose" placeholder="Dose (In Milligrams)" class="field" type="text" onkeypress='return event.charCode >= 48 && event.charCode <= 57' required></input>
               <textarea rows="4" class="field" name="note" placeholder="Add a note..."></textarea>
               <br>
               <input type="Submit" value="SUBMIT" id="submit-button">

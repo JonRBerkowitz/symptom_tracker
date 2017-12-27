@@ -12,13 +12,13 @@
               <% if @post.kind == "symptom" %>
               <form method="POST" action="/posts/<%=@post.id%>/edit">
                 <input type="hidden" name="_method" value="patch">
-              <input list="symptoms" name="title" placeholder="Symptom" class="field" value="<%=@post.title%>" autofocus>
+              <input list="symptoms" name="title" placeholder="Symptom" class="field" value="<%=@post.title%>" autofocus required>
               <datalist id="symptoms">
                 <% @symptoms.each do |symptom| %>
                 <option value="<%=symptom.name%>">
                 <% end %>
               </datalist>
-              <input type="text" name="duration[length]" class="field field-alt" placeholder="Duration" value="<%=@post.duration.split(" ").first%>"></input>
+              <input type="text" name="duration[length]" class="field field-alt" placeholder="Duration" value="<%=@post.duration.split(" ").first%>" onkeypress='return event.charCode >= 48 && event.charCode <= 57' required></input>
               <%time = @post.duration.split(" ").last %>
               <select name="duration[unit]" class="time-box">
                 <option value="Minutes" <%if time == "Minutes"%>selected<%end%>>Minutes</option>
@@ -48,7 +48,7 @@
                 <option value="<%=medication.name%>">
                 <% end %>
               </datalist>
-              <input name="dose" placeholder="Dose (In Milligrams)" value="<%=@post.dose%>" class="field"></input>
+              <input name="dose" placeholder="Dose (In Milligrams)" value="<%=@post.dose%>" class="field" type="text" onkeypress='return event.charCode >= 48 && event.charCode <= 57' required></input>
               <textarea rows="4" class="field" name="note" placeholder="Add a note..."><%=@post.note%></textarea>
               <br>
               <input type="Submit" value="SUBMIT" id="submit-button">

@@ -52,7 +52,7 @@
       </div>
 
       <div class="col-lg-8">
-        <%if !@user.posts%>
+        <%if @user.posts.empty?%>
         <h2 class="starter-text">Add a symptom or medication to get started.</h2>
         <% end %>
         <% @user.posts.reverse_each do |post| %>
@@ -70,7 +70,8 @@
               </div>
               <%elsif post.kind == "medication"%>
               <div class="col-sm-12">
-                <p>Took <%=post.dose%>&nbsp;&nbsp; <span class="bullet">&bull;</span> &nbsp;&nbsp;<%=post.post_time%></p>
+                <p>Took <%=post.dose%>&nbsp;&nbsp; <span class="bullet">&bull;</span> &nbsp;&nbsp;
+                <%=post.post_time%></p>
               </div>
               <% end %>
             </div>
