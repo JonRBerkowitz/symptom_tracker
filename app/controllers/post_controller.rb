@@ -48,7 +48,7 @@ class PostController < ApplicationController
       @post.dose = "#{params[:dose]} mg"
     end
     @post.note = params[:note]
-    @post.post_time = Time.now.strftime("%d/%m/%Y %H:%M")
+    @post.post_time = Time.now.strftime("%m/%d/%Y %H:%M")
     @user.posts << @post
 
     redirect "/users/#{@user.id}"
