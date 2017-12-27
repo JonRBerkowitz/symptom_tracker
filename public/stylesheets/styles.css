@@ -212,6 +212,10 @@ input:focus {
     color: white;
 }
 
+.button-l {
+  margin-bottom: 20px;
+}
+
 .sub-title {
   font-size: .9em;
   font-weight: 400;
@@ -248,9 +252,17 @@ li {
   font-size: .9em;
 }
 
-.fix-box {
-  position: fixed;
-  max-width: 300px;
+@media screen and (max-width: 995px) {
+  .fix-box {
+    position: fixed;
+    max-width: 300px;
+  }
+}
+
+@media screen and (max-width: 994px) {
+  .fix-box {
+    position: relative;
+  }
 }
 
 hr {
