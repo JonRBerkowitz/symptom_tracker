@@ -1,9 +1,15 @@
-Symptom.create(:name => "Fever")
-Symptom.create(:name => "Headache")
-Symptom.create(:name => "Flu")
-Symptom.create(:name => "Cancer")
-Symptom.create(:name => "Tummyache")
+require 'open-uri'
+require 'nokogiri'
 
-Medication.create(:name => "Tylenol")
-Medication.create(:name => "Omeprazole")
-Medication.create(:name => "Propanalol")
+ALPHA = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
+
+
+ def make_symptoms
+   ALPHA.each do |letter|
+     Nokogiri::HTML(open("https://www.medicinenet.com/symptoms_and_signs/alpha_#{letter}.htm")).css(".AZ_results ul li").each do |i|
+       Symptom.create(:name => i.css("a").text)
+     end
+   end
+ end
+
+make_symptoms
