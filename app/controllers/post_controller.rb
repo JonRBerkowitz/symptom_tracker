@@ -73,17 +73,22 @@ class PostController < ApplicationController
   patch '/posts/:id/edit' do
     @user = current_user
     @post = Post.find_by_id(params[:id])
-    @post.title = params[:title]
-    if @post.kind == "symptom"
-      @post.duration = "#{params[:duration][:length]} #{params[:duration][:unit]}"
-      @post.intensity = params[:intensity]
-    elsif @post.kind == "medication"
-      @post.dose = "#{params[:dose]} mg"
-    end
-    @post.note = params[:note]
-    @post.save
 
-    redirect "/users/#{@user.id}"
+    if @user.posts.include?(@post)
+      @post.title = params[:title]
+      if @post.kind == "symptom"
+        @post.duration = "#{params[:duration][:length]} #{params[:duration][:unit]}"
+        @post.intensity = params[:intensity]
+      elsif @post.kind == "medication"
+        @post.dose = "#{params[:dose]} mg"
+      end
+      @post.note = params[:note]
+      @post.save
+
+      redirect "/users/#{@user.id}"
+    else
+      redirect '/'
+    end
   end
 
   delete '/posts/:id/delete' do

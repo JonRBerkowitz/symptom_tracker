@@ -6,7 +6,7 @@ class UserController < ApplicationController
       redirect "/users/#{@user.id}"
     else
     erb :'users/signup'
-  end
+    end
   end
 
   post '/signup' do
@@ -52,7 +52,11 @@ class UserController < ApplicationController
 
   get '/users/:id' do
     @user = User.find_by_id(params[:id])
+    if @user == current_user
     erb :'users/show'
+    else
+      redirect '/'
+    end
   end
 
 end
