@@ -16,9 +16,13 @@ class UserController < ApplicationController
       User.find_by(:email => params[:email])
       redirect '/signup'
     else
+      if !params[:username].empty? && !params[:email].empty? && !params[:password].empty?
       @user = User.create(params)
       session[:user_id] = @user.id
       redirect "/users/#{@user.id}"
+      else
+        redirect '/signup'
+      end
     end
   end
 
