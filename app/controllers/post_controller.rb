@@ -95,8 +95,20 @@ class PostController < ApplicationController
   delete '/posts/:id/delete' do
     @user = current_user
     @post = Post.find_by_id(params[:id])
+    title = @post.title
+    kind = @post.kind
+
     if current_user.posts.include?(@post)
       @post.destroy
+      if !current_user.posts.find_by(:title => title)
+        if kind == "symptom"
+          @symptom = current_user.symptoms.find_by(:name => title)
+          current_user.symptoms.delete(@symptom)
+        elsif kind == "medication"
+          @medication = current_user.medications.find_by(:name => title)
+          current_user.medications.delete(@medication)
+        end
+      end
       redirect "/users/#{@user.id}"
     else
       redirect '/login'
