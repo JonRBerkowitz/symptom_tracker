@@ -336,3 +336,9 @@ hr {
   border-bottom: 1px solid #DDD;
   font-weight: 900;
 }
+
+.flash {
+  color: red;
+  font-size: .8em;
+  text-align: center;
+}

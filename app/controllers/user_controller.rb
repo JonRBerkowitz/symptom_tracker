@@ -1,5 +1,8 @@
-class UserController < ApplicationController
+require 'rack-flash'
 
+class UserController < ApplicationController
+  enable :sessions
+  use Rack::Flash
   get '/signup' do
     if logged_in?
       @user = User.find_by_id(session[:user_id])
@@ -11,12 +14,15 @@ class UserController < ApplicationController
 
   post '/signup' do
     if User.find_by(:username => params[:username])
+      flash[:message] = "Username is already taken."
       redirect '/signup'
     elsif
       User.find_by(:email => params[:email])
+      flash[:message] = "Email is already taken."
       redirect '/signup'
     else
       if !params[:username].empty? && !params[:email].empty? && !params[:password].empty?
+      flash[:message] = "All fields required"
       @user = User.create(params)
       session[:user_id] = @user.id
       redirect "/users/#{@user.id}"

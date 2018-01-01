@@ -14,6 +14,9 @@
                 <input type="Submit" value="SIGN UP" id="sign-up-button">
               </form>
               <p id="login-link">Already have an account? <a href="/login">Log in Here</a></p>
+              <% if flash.has?(:message) %>
+                <p class="flash"><%= flash[:message] %></p>
+              <% end %>
             </div>
           </div>
       </div>
