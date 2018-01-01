@@ -240,6 +240,8 @@ li {
   background-color: white;
   border-radius: 3px;
   margin-bottom: 10px;
+  max-height: 50vh;
+  overflow-y: auto;
 }
 
 .post-box {
