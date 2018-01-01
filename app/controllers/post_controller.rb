@@ -21,10 +21,9 @@ class PostController < ApplicationController
     @post = Post.create
 
     @post.kind = params[:kind]
+    name = params[:title].downcase
 
     if @post.kind == "symptom"
-
-      name = params[:title].downcase
 
       if Symptom.find_by(:name => name)
         @symptom = Symptom.find_by(:name => name)
@@ -42,16 +41,16 @@ class PostController < ApplicationController
 
     elsif @post.kind == "medication"
 
-      if Medication.find_by(:name => params[:title])
-        @medications = Medication.find_by(:name => params[:title])
+      if Medication.find_by(:name => name)
+        @medication = Medication.find_by(:name => name)
       else
-        @medications = Medication.create(:name => params[:title])
+        @medication = Medication.create(:name => name)
       end
 
-      if !@user.medications.include?(@medications)
-        @user.medications << @medications
+      if !@user.medications.include?(@medication)
+        @user.medications << @medication
       end
-
+      @post.title = @medication.name
       @post.dose = "#{params[:dose]} mg"
     end
     @post.note = params[:note]
