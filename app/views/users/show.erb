@@ -8,16 +8,22 @@
               <h1 id="username">Welcome,<br><%= @user.username %>.</h1>
               <p class="sub-title symptom">Known Symptoms:<p>
               <p class="user-symptoms">
+                <ul>
+                  <%if @user.symptoms.empty? %>
+                  <li>- none </li>
+                  <% end %>
                 <%@user.symptoms.each do |symptom|%>
-                <ul>
                 <li>- <%=symptom.name%></li>
-                <ul>
                 <%end%>
+                </ul>
               </p>
 
               <p class="sub-title medication">Current Medications:<p>
                 <p class="user-symptoms">
                 <ul>
+                  <%if @user.medications.empty? %>
+                  <li>- none </li>
+                  <% end %>
                 <%@user.medications.each do |medication|%>
                 <li>- <%=medication.name%></li>
                 </ul>
