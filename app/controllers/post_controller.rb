@@ -18,20 +18,21 @@ class PostController < ApplicationController
 
   post '/posts' do
     @user = current_user
-    @post = Post.create(:title => params[:title].split.map(&:capitalize).join(' '))
+    @post = Post.create
 
     @post.kind = params[:kind]
 
     if @post.kind == "symptom"
 
-      symptom = Symptom.find_by(:name => params[:title].split.map(&:capitalize).join(' '))
+      name = params[:title].downcase
 
-      if symptom
-        @symptom = symptom
+      if Symptom.find_by(:name => name)
+        @symptom = Symptom.find_by(:name => name)
       else
-        @symptom = Symptom.create(:name => params[:title].split.map(&:capitalize).join(' '))
+        @symptom = Symptom.create(:name => name)
       end
 
+      @post.title = @symptom.name
       @post.duration = "#{params[:duration][:length]} #{params[:duration][:unit]}"
       @post.intensity = params[:intensity]
 
