@@ -62,6 +62,8 @@
         <h2 class="starter-text">Add a symptom or medication to get started.</h2>
         <% end %>
         <% @user.posts.reverse_each do |post| %>
+        <%if post.kind == "medication" %>
+
           <div class="container post-box">
             <div class="row post-title-box <%if post.kind == "medication"%>medbox<%end%>">
               <div class="col-sm-12">
@@ -70,16 +72,12 @@
             </div>
 
             <div class="row post-info-box">
-              <%if post.kind == "symptom" %>
-              <div class="col-sm-12">
-                <p><%=post.duration%>&nbsp;&nbsp; <span class="bullet">&bull;</span> &nbsp;&nbsp;<%=post.intensity%>/5 Intensity&nbsp;&nbsp; <span class="bullet">&bull;</span> &nbsp;&nbsp;<%=post.post_time%></p>
-              </div>
-              <%elsif post.kind == "medication"%>
+
               <div class="col-sm-12">
                 <p>Took <%=post.dose%>&nbsp;&nbsp; <span class="bullet">&bull;</span> &nbsp;&nbsp;
                 <%=post.post_time%></p>
               </div>
-              <% end %>
+
             </div>
             <% if post.note %>
             <div class="row post-note-box">
@@ -110,9 +108,10 @@
         </div>
         <% end %>
 
+        <% end %>
+
       </div>
     </div>
   </div>
-
 
 </body>

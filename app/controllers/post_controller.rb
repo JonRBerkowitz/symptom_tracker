@@ -16,6 +16,34 @@ class PostController < ApplicationController
     end
   end
 
+  get '/symptoms/:id' do
+    @symptoms = Symptom.all
+    if logged_in?
+      @user = User.find_by_id(params[:id])
+      if @user == current_user
+      erb :'posts/symptoms'
+      else
+        redirect '/'
+      end
+    else
+      redirect '/'
+    end
+  end
+
+  get '/medications/:id' do
+    @symptoms = Symptom.all
+    if logged_in?
+      @user = User.find_by_id(params[:id])
+      if @user == current_user
+      erb :'posts/medications'
+      else
+        redirect '/'
+      end
+    else
+      redirect '/'
+    end
+  end
+
   post '/posts' do
     @user = current_user
     @post = Post.create
@@ -98,12 +126,12 @@ class PostController < ApplicationController
     title = @post.title
     kind = @post.kind
 
-    if current_user.posts.include?(@post)
+    if @user.posts.include?(@post)
       @post.destroy
       if !current_user.posts.find_by(:title => title)
         if kind == "symptom"
           @symptom = current_user.symptoms.find_by(:name => title)
-          current_user.symptoms.delete(@symptom)
+          @user.symptoms.delete(@symptom)
         elsif kind == "medication"
           @medication = current_user.medications.find_by(:name => title)
           current_user.medications.delete(@medication)
