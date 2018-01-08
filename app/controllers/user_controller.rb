@@ -3,6 +3,7 @@ require 'rack-flash'
 class UserController < ApplicationController
   enable :sessions
   use Rack::Flash
+
   get '/signup' do
     if logged_in?
       @user = User.find_by_id(session[:user_id])
@@ -61,9 +62,13 @@ class UserController < ApplicationController
   end
 
   get '/users/:id' do
-    @user = User.find_by_id(params[:id])
-    if @user == current_user
-    erb :'users/show'
+    if logged_in?
+      @user = User.find_by_id(params[:id])
+      if @user == current_user
+      erb :'users/show'
+      else
+        redirect '/'
+      end
     else
       redirect '/'
     end

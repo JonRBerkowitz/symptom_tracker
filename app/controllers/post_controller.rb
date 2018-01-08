@@ -11,9 +11,9 @@ class PostController < ApplicationController
       @type = "medication"
     end
     erb :'/posts/new'
-  else
-    redirect '/login'
-  end
+    else
+      redirect '/login'
+    end
   end
 
   post '/posts' do
