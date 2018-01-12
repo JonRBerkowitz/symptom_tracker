@@ -16,7 +16,7 @@ class PostController < ApplicationController
     end
   end
 
-  get '/symptoms/:id' do
+  get 'users/:id/symptoms' do
     @symptoms = Symptom.all
     if logged_in?
       @user = User.find_by_id(params[:id])
@@ -30,7 +30,7 @@ class PostController < ApplicationController
     end
   end
 
-  get '/medications/:id' do
+  get 'users/:id/medications' do
     @symptoms = Symptom.all
     if logged_in?
       @user = User.find_by_id(params[:id])
